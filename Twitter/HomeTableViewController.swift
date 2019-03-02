@@ -9,18 +9,21 @@
 import UIKit
 
 class HomeTableViewController: UITableViewController {
-
     var tweetArray = [NSDictionary]()
     var numberOfTweets: Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadTweets()
+        self.loadTweets()
 
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.loadTweets()
+    }
+    
     func loadTweets(){
-        
         let myUrl = "https://api.twitter.com/1.1/statuses/home_timeline.json"
         let myParams = ["count": 10]
         
